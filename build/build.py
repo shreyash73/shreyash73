@@ -78,11 +78,12 @@ def fetch():
       contributionsCollection { contributionCalendar { totalContributions
         weeks { contributionDays { date contributionCount } } } }
       repositories(first: 100, ownerAffiliations: OWNER, privacy: PUBLIC, isFork: false) {
-        totalCount nodes { languages(first: 10) { edges { size node { name } } } } } } }""" % LOGIN
+        nodes { name languages(first: 10) { edges { size node { name } } } } } } }""" % LOGIN
     u = api("/graphql", {"query": q})["data"]["user"]
     cal = u["contributionsCollection"]["contributionCalendar"]
+    repos = [r for r in u["repositories"]["nodes"] if r["name"] != LOGIN]  # this profile repo is not a project
     langs = collections.Counter()
-    for repo in u["repositories"]["nodes"]:
+    for repo in repos:
         for e in repo["languages"]["edges"]:
             langs[e["node"]["name"]] += e["size"]
 
@@ -99,7 +100,7 @@ def fetch():
     return dict(
         name=u["name"] or LOGIN, since=created.year,
         years=int((dt.date.today() - created).days / 365.25),
-        repos=u["repositories"]["totalCount"], total=cal["totalContributions"],
+        repos=len(repos), total=cal["totalContributions"],
         weeks=[(dt.date.fromisoformat(w["contributionDays"][0]["date"]),
                 sum(d["contributionCount"] for d in w["contributionDays"])) for w in cal["weeks"]],
         langs=langs, merged_n=merged_n, open_n=open_n, merged=merged, opened=opened,
