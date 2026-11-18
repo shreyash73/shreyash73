@@ -1,0 +1,38 @@
+{
+  "login": "shreyash73",
+  "place": "Goa, India",
+  "tagline": "Growth at Namma Yatri. I build small tools and websites on the side.",
+  "projects": [
+    {
+      "wide": true,
+      "kind": "WhatsApp assistant · Rust",
+      "title": "Kurli",
+      "about": "A personal WhatsApp assistant I host myself. It sends me a digest of what needs me, keeps track of what I owe people, and drafts replies that only go out when I say send.",
+      "url": "https://github.com/shreyash73/kurli"
+    },
+    {
+      "kind": "macOS tool",
+      "title": "aerospace-overview",
+      "about": "Hold Option to see every open window and the workspace it lives on. A companion for the AeroSpace window manager.",
+      "url": "https://github.com/shreyash73/aerospace-overview"
+    },
+    {
+      "kind": "Website",
+      "title": "Bawaal Studios",
+      "about": "A production studio's site, built as one film cut into thirteen scenes. Next.js, GSAP and Lenis.",
+      "url": "https://shreyash73.github.io/bawaal-studios/"
+    },
+    {
+      "kind": "Design concept",
+      "title": "Livom Clinic",
+      "about": "A redesign concept for a clinic's website in Goa, with scroll-driven motion. Not the clinic's official site.",
+      "url": "https://shreyash73.github.io/livom-concept/"
+    },
+    {
+      "kind": "Contributor",
+      "title": "claude-hq",
+      "about": "A dashboard for Claude Code sessions. I added the Arena voice and video lobby, a sidebar redesign and a 3D city.",
+      "url": "https://github.com/RoString36222/claude-hq"
+    }
+  ]
+}
